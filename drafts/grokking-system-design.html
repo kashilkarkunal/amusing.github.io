@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+  <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+
+
+  <title>Grokking System Design</title>
+
+
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="referrer" content="origin" />
+  <meta name="generator" content="Pelican" />
+<link href="/drafts/grokking-system-design.html" rel="canonical" />
+  <!-- Feed -->
+        <link href="/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="a[musing] Full Atom Feed" />
+          <link href="/feeds/{slug}.atom.xml" type="application/atom+xml" rel="alternate" title="a[musing] Categories Atom Feed" />
+
+  <link href="/theme/css/style.css" type="text/css" rel="stylesheet" />
+
+  <!-- Code highlight color scheme -->
+      <link href="/theme/css/code_blocks/darkly.css" rel="stylesheet">
+
+
+  <!-- Custom fonts -->
+  <link href='https://fonts.googleapis.com/css?family=Montserrat:400,300' rel='stylesheet' type='text/css' />
+  <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css" />
+
+  <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+  <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+  <![endif]-->
+
+
+
+    <meta name="description" content="Grokking the System Design Interview Notes">
+
+    <meta name="author" content="kashilkarkunal">
+
+    <meta name="tags" content="cs">
+
+
+
+
+<!-- Open Graph -->
+<meta property="og:site_name" content="a[musing]"/>
+<meta property="og:title" content="Grokking System Design"/>
+<meta property="og:description" content="Grokking the System Design Interview Notes"/>
+<meta property="og:locale" content="en_US"/>
+<meta property="og:url" content="/drafts/grokking-system-design.html"/>
+<meta property="og:type" content="article"/>
+<meta property="article:published_time" content="2021-03-24 20:50:00-07:00"/>
+<meta property="article:modified_time" content=""/>
+<meta property="article:author" content="/author/kashilkarkunal.html">
+<meta property="article:section" content="cs"/>
+<meta property="article:tag" content="cs"/>
+<meta property="og:image" content="/images/head_cover.jpeg">
+
+<!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@kashilkarkunal">
+    <meta name="twitter:title" content="Grokking System Design">
+    <meta name="twitter:url" content="/drafts/grokking-system-design.html">
+
+        <meta name="twitter:image:src" content="/images/head_cover.jpeg">
+
+      <meta name="twitter:description" content="Grokking the System Design Interview Notes">
+
+<script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "Article",
+  "name": "Grokking System Design",
+  "headline": "Grokking System Design",
+  "datePublished": "2021-03-24 20:50:00-07:00",
+  "dateModified": "",
+  "author": {
+    "@type": "Person",
+    "name": "kashilkarkunal",
+    "url": "/author/kashilkarkunal.html"
+  },
+  "image": "/images/head_cover.jpeg",
+  "url": "/drafts/grokking-system-design.html",
+  "description": "Grokking the System Design Interview Notes"
+}
+</script>
+</head>
+<!-- TODO : Body class -->
+<body class="home-template">
+
+<nav id="menu">
+  <a class="close-button">Close</a>
+  <div class="nav-wrapper">
+    <p class="nav-label">Menu</p>
+    <ul>
+
+              <li role="presentation"><a href="/pages/about-me.html">About Me</a></li>
+              <li role="presentation"><a href="/pages/this-site.html">This Site</a></li>
+
+    </ul>
+  </div>
+</nav>
+    <!-- Progressbar -->
+    <div class="progress-container">
+        <span class="progress-bar"></span>
+    </div>
+
+    <!-- Page Header -->
+    <!-- Set your background image for this header on the line below. -->
+    <header id="post-header" class="has-cover">
+      <div class="inner">
+        <nav id="navigation">
+            <span id="home-button" class="nav-button">
+                <a class="home-button" href="/" title="Home"><i class="ic ic-arrow-left"></i> Home</a>
+            </span>
+          <span id="menu-button" class="nav-button">
+            <a class="menu-button"><i class="ic ic-menu"></i> Menu</a>
+          </span>
+        </nav>
+        <h1 class="post-title">Grokking System Design</h1>
+        <!-- TODO : Proper class for headline -->
+        <span class="post-meta">
+                <a href="/author/kashilkarkunal.html">Kunal</a>
+            | <time datetime="Wed 24 March 2021">Wed 24 March 2021</time>
+        </span>
+        <!-- TODO : Modified check -->
+            <div class="post-cover cover" style="background-image: url('/images/head_cover.jpeg')">
+      </div>
+    </header>
+
+  <section id="wrapper">
+    <a class="hidden-close"></a>
+
+    <!-- Post content -->
+    <main class="content" role="main">
+        <article class="post">
+        <div class="inner">
+            <section class="post-content">
+                <h2>System Design Approach</h2>
+<ol>
+<li>Try to Learn from Existing Systems</li>
+<li>Lead the Conversations - Discussion of the Solution is more important than the ultimate solution.</li>
+<li>Break down the system into smaller modules</li>
+<li>Dealing with bottlenecks in the System and Building a Scalable System</li>
+</ol>
+<h2>System Design Components</h2>
+<h3>Consistent Hashing</h3>
+<p>Consistent Hashing is an important algorithm for storing data in Distributed Hash Tables. As opposed to a regular hash_function, consistent hashing is horizontally scalable and prevents the issue where a certain node hold disproportionately large amounts of data compared to other nodes in the DHT system.</p>
+<p>Consistent Hashing reduces the amount of reorganization required when new nodes are added to the system.</p>
+<h4>How it Works</h4>
+<ol>
+<li>
+<p>Given a list of cache servers, hash them to integers in the range.</p>
+</li>
+<li>
+<p>To map a key to a server,</p>
+</li>
+<li>Hash it to a single integer.</li>
+<li>Move clockwise on the ring until finding the first cache it encounters.</li>
+<li>That cache is the one that contains the key. </li>
+</ol>
+<p>To add a new server, say D, keys that were originally residing at C will be split. Some of them will be shifted to D, while other keys will not be touched. To remove a cache or if a cache failed, say A, all keys that were originally mapping to A will fall into B, and only those keys need to be moved to B, other keys will not be affected. For load balancing, as we discussed in the beginning, the real data is essentially randomly distributed and thus may not be uniform. It may make the keys on caches unbalanced. To handle this issue, we add “virtual replicas” for caches. Instead of mapping each cache to a single point on the ring, we map it to multiple points on the ring, i.e. replicas. This way, each cache is associated with multiple portions of the ring. If the hash function is “mixes well,” as the number of replicas increases, the keys will be more balanced. </p>
+<h3>Load Balancing</h3>
+<p>To utilize full scalability and redundancy, we can try to balance the load at each layer of the system. We can add LBs at three places:</p>
+<ul>
+<li>Between the user and the web server</li>
+<li>Between web servers and an internal platform layer, like application servers or cache servers</li>
+<li>Between internal platform layer and database</li>
+</ul>
+<p>Types of Load Balancers </p>
+<ol>
+<li>Smart Clients - Easy to implement but good for smaller systems</li>
+<li>Hardware Load Balancers - High performance but expensive</li>
+<li>Software Load Balancers - Hybrid approach; HAProxy</li>
+</ol>
+<h3>Caching</h3>
+<p>Better use of the existing resources, by leveraging the locality of reference principle. Recently requested data is like to be requested again.</p>
+<h4>Application Server Cache</h4>
+<p>Each node has its own cache to serve locally cached data instead of going to the disk. This approach can have a lot of cache misses if a LB is used and it randomly distributes data over several nodes.</p>
+<h4>Distrbuted Cache</h4>
+<p>Cache is divided up using Consistent Hashing, such that each node holds part of the data. Request Node can use the CH algorithm to figure out which node to reach out to, before going to the origin if the data has not been cached yet.</p>
+<h4>Global Cache</h4>
+<p>Single cache shared across different nodes, where the cache is a server/file store with faster access than original store.</p>
+<h4>CDN</h4>
+<p>A type of cache used to serve static media content.</p>
+<h4>Cache Invalidation</h4>
+<ol>
+<li>Write-Through Cache</li>
+<li>Write Around Cache</li>
+<li>Write Back Cache</li>
+</ol>
+<h4>Cache Eviction Policies</h4>
+<ol>
+<li>FIFO</li>
+<li>LIFO</li>
+<li>LRU - Least Recently Used</li>
+<li>MRU - Most Recently Used</li>
+<li>LFU - Least Frequently Used</li>
+<li>RR - Random Replacement</li>
+</ol>
+<h3>Data Partitioning/Sharding</h3>
+<p>Splitting data over horizontally scaled DB in order to improve read/write performance.</p>
+<h4>Partitioning Methods</h4>
+<ol>
+<li>Horizontal Partitioning - Range Based Partitioning; Split data into various sets based on their values and store the data on separate nodes.</li>
+<li>Vertical Partitioning - Split Data along specific features. </li>
+<li>Directory Based Partitioning - Use a lookup service to figure out which DB node contains the data we are looking for.</li>
+</ol>
+<h4>Partitioning Criteria</h4>
+<ol>
+<li>Key or Hash-based partitioning</li>
+<li>List Partitioning - Each partition assigned a list of values.</li>
+<li>Round-robin partitioning - n servers, use (i mod n) to assign the i^th^ tuple</li>
+<li>Composite Partitioning - Combine the above mentioned criteria</li>
+</ol>
+<h4>Partitioning Constraints</h4>
+<ol>
+<li>Joins and Denormalization</li>
+<li>Referential Integrity</li>
+<li>Rebalancing</li>
+</ol>
+<h3>Indices</h3>
+<p>Important to find data quickly when it is part of a large dataset.</p>
+<h3>Proxies</h3>
+<p>Client -&gt; Proxy Server -&gt; Back-End Server.</p>
+<p>Used to filter requests and log them, or transform them. It also allows us to collapse same requests together, reducing the number of reads from disk.</p>
+<h3>Queues</h3>
+<p>Useful in large distributed systems to keep it responsive and scalable. Incoming requests are put into a processing queue, which a worker will try to consume and return a response to the client as soon as it can.</p>
+<h3>Redundancy and Replication</h3>
+<p>Redundancy - Duplication of critical data or services to increase reliability.</p>
+<h3>SQL vs. NOSQL</h3>
+<p>NoSQL - </p>
+<ol>
+<li>Key Value Stores</li>
+<li>Document Databases</li>
+<li>Wide-Column Databases</li>
+<li>Graph Databases</li>
+</ol>
+            </section>
+
+            <section class="post-info">
+                <div class="post-share">
+                    <a class="twitter" href="https://twitter.com/share?text=Grokking System Design&amp;url=/drafts/grokking-system-design.html" onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+                    <i class="ic ic-twitter"></i><span class="hidden">Twitter</span>
+                    </a>
+                    <a class="facebook" href="https://www.facebook.com/sharer/sharer.php?u=/drafts/grokking-system-design.html" onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+                    <i class="ic ic-facebook"></i><span class="hidden">Facebook</span>
+                    </a>
+                    <a class="googleplus" href="https://plus.google.com/share?url=/drafts/grokking-system-design.html" onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
+                    <i class="ic ic-googleplus"></i><span class="hidden">Google+</span>
+                    </a>
+                    <div class="clear"></div>
+                </div>
+
+                <aside class="post-tags">
+<a href="/tag/cs.html">cs</a>                </aside>
+
+                <div class="clear"></div>
+
+                <aside class="post-author">
+
+
+                        <figure class="post-author-avatar">
+                            <img src="/images/avatar.jpeg" alt="Kunal" />
+                        </figure>
+                    <div class="post-author-bio">
+                        <h4 class="post-author-name"><a href="/author/kashilkarkunal.html">Kunal</a></h4>
+                            <p class="post-author-about">👨‍💻 🏃‍♂️ ⛰️ 🐈 🤹‍♂️ 📚 🔁</p>
+                            <span class="post-author-location"><i class="ic ic-location"></i> Los Angeles</span>
+                        <!-- Social linkes in alphabet order. -->
+                    </div>
+                    <div class="clear"></div>
+                </aside>
+
+                </section>
+
+
+                <aside class="post-nav">
+                    <div class="clear"></div>
+                </aside>
+
+            </div>
+        </article>
+    </main>
+      <!-- TODO : Body class -->
+    <div id="body-class" style="display: none;" class=""></div>
+
+    <footer id="footer">
+      <div class="inner">
+        <section class="credits">
+
+
+          <span class="credits-theme">Theme <a href="https://github.com/arulrajnet/attila" rel="nofollow">Attila</a></span>
+          <span class="credits-software">Published with <a href="https://github.com/getpelican/pelican" rel="nofollow">Pelican</a></span>
+        </section>
+      </div>
+    </footer>
+  </section>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script type="text/javascript" src="/theme/js/script.js"></script>
+
+</body>
+</html>

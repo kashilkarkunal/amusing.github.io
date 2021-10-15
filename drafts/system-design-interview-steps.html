@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+  <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+
+
+  <title>System Design Interview: Steps</title>
+
+
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="referrer" content="origin" />
+  <meta name="generator" content="Pelican" />
+<link href="/drafts/system-design-interview-steps.html" rel="canonical" />
+  <!-- Feed -->
+        <link href="/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="a[musing] Full Atom Feed" />
+          <link href="/feeds/{slug}.atom.xml" type="application/atom+xml" rel="alternate" title="a[musing] Categories Atom Feed" />
+
+  <link href="/theme/css/style.css" type="text/css" rel="stylesheet" />
+
+  <!-- Code highlight color scheme -->
+      <link href="/theme/css/code_blocks/darkly.css" rel="stylesheet">
+
+
+  <!-- Custom fonts -->
+  <link href='https://fonts.googleapis.com/css?family=Montserrat:400,300' rel='stylesheet' type='text/css' />
+  <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css" />
+
+  <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+  <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+  <![endif]-->
+
+
+
+    <meta name="description" content="Grokking the System Design Interview Notes">
+
+    <meta name="author" content="kashilkarkunal">
+
+    <meta name="tags" content="cs">
+
+
+
+
+<!-- Open Graph -->
+<meta property="og:site_name" content="a[musing]"/>
+<meta property="og:title" content="System Design Interview: Steps"/>
+<meta property="og:description" content="Grokking the System Design Interview Notes"/>
+<meta property="og:locale" content="en_US"/>
+<meta property="og:url" content="/drafts/system-design-interview-steps.html"/>
+<meta property="og:type" content="article"/>
+<meta property="article:published_time" content="2021-03-25 20:50:00-07:00"/>
+<meta property="article:modified_time" content=""/>
+<meta property="article:author" content="/author/kashilkarkunal.html">
+<meta property="article:section" content="cs"/>
+<meta property="article:tag" content="cs"/>
+<meta property="og:image" content="/images/head_cover.jpeg">
+
+<!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@kashilkarkunal">
+    <meta name="twitter:title" content="System Design Interview: Steps">
+    <meta name="twitter:url" content="/drafts/system-design-interview-steps.html">
+
+        <meta name="twitter:image:src" content="/images/head_cover.jpeg">
+
+      <meta name="twitter:description" content="Grokking the System Design Interview Notes">
+
+<script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "Article",
+  "name": "System Design Interview: Steps",
+  "headline": "System Design Interview: Steps",
+  "datePublished": "2021-03-25 20:50:00-07:00",
+  "dateModified": "",
+  "author": {
+    "@type": "Person",
+    "name": "kashilkarkunal",
+    "url": "/author/kashilkarkunal.html"
+  },
+  "image": "/images/head_cover.jpeg",
+  "url": "/drafts/system-design-interview-steps.html",
+  "description": "Grokking the System Design Interview Notes"
+}
+</script>
+</head>
+<!-- TODO : Body class -->
+<body class="home-template">
+
+<nav id="menu">
+  <a class="close-button">Close</a>
+  <div class="nav-wrapper">
+    <p class="nav-label">Menu</p>
+    <ul>
+
+              <li role="presentation"><a href="/pages/about-me.html">About Me</a></li>
+              <li role="presentation"><a href="/pages/this-site.html">This Site</a></li>
+
+    </ul>
+  </div>
+</nav>
+    <!-- Progressbar -->
+    <div class="progress-container">
+        <span class="progress-bar"></span>
+    </div>
+
+    <!-- Page Header -->
+    <!-- Set your background image for this header on the line below. -->
+    <header id="post-header" class="has-cover">
+      <div class="inner">
+        <nav id="navigation">
+            <span id="home-button" class="nav-button">
+                <a class="home-button" href="/" title="Home"><i class="ic ic-arrow-left"></i> Home</a>
+            </span>
+          <span id="menu-button" class="nav-button">
+            <a class="menu-button"><i class="ic ic-menu"></i> Menu</a>
+          </span>
+        </nav>
+        <h1 class="post-title">System Design Interview: Steps</h1>
+        <!-- TODO : Proper class for headline -->
+        <span class="post-meta">
+                <a href="/author/kashilkarkunal.html">Kunal</a>
+            | <time datetime="Thu 25 March 2021">Thu 25 March 2021</time>
+        </span>
+        <!-- TODO : Modified check -->
+            <div class="post-cover cover" style="background-image: url('/images/head_cover.jpeg')">
+      </div>
+    </header>
+
+  <section id="wrapper">
+    <a class="hidden-close"></a>
+
+    <!-- Post content -->
+    <main class="content" role="main">
+        <article class="post">
+        <div class="inner">
+            <section class="post-content">
+                <h2>Step 1: Requirements Clarification</h2>
+<p>Ask clarifying questions to get a better sense of the system you are building and also which areas the interviewer wants you to focus on.</p>
+<p>E.g questions for a Twitter like system - </p>
+<ul>
+<li>Will users of our service be able to post tweets and follow otherpeople?</li>
+<li>Should we also design to create and display user’s timeline?</li>
+<li>Will tweets contain photos and videos?</li>
+<li>Are we focusing on backend only or are we developing front-end too?</li>
+<li>Will users be able to search tweets?</li>
+<li>Do we need to display hot trending topics?</li>
+<li>Would there be any push notification for new (or important) tweets?</li>
+</ul>
+<h2>Step 2: Define the System Interface</h2>
+<h2>Step 3: Rough Estimates</h2>
+<p>Get an idea about scale of the system you're going to design. Ask about the number of requests, users, amount of storage required and network bandwidth used.</p>
+<h2>Step 4: Define Data Model</h2>
+<h2>Step 5: High-Level Design</h2>
+<p>Draw big component boxes, outlining LBs, Servers, DBs, etc.</p>
+<h2>Step 6: Detailed Design</h2>
+<h2>Step 7: Identify and resolve Bottlenecks</h2>
+            </section>
+
+            <section class="post-info">
+                <div class="post-share">
+                    <a class="twitter" href="https://twitter.com/share?text=System Design Interview: Steps&amp;url=/drafts/system-design-interview-steps.html" onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+                    <i class="ic ic-twitter"></i><span class="hidden">Twitter</span>
+                    </a>
+                    <a class="facebook" href="https://www.facebook.com/sharer/sharer.php?u=/drafts/system-design-interview-steps.html" onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+                    <i class="ic ic-facebook"></i><span class="hidden">Facebook</span>
+                    </a>
+                    <a class="googleplus" href="https://plus.google.com/share?url=/drafts/system-design-interview-steps.html" onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
+                    <i class="ic ic-googleplus"></i><span class="hidden">Google+</span>
+                    </a>
+                    <div class="clear"></div>
+                </div>
+
+                <aside class="post-tags">
+<a href="/tag/cs.html">cs</a>                </aside>
+
+                <div class="clear"></div>
+
+                <aside class="post-author">
+
+
+                        <figure class="post-author-avatar">
+                            <img src="/images/avatar.jpeg" alt="Kunal" />
+                        </figure>
+                    <div class="post-author-bio">
+                        <h4 class="post-author-name"><a href="/author/kashilkarkunal.html">Kunal</a></h4>
+                            <p class="post-author-about">👨‍💻 🏃‍♂️ ⛰️ 🐈 🤹‍♂️ 📚 🔁</p>
+                            <span class="post-author-location"><i class="ic ic-location"></i> Los Angeles</span>
+                        <!-- Social linkes in alphabet order. -->
+                    </div>
+                    <div class="clear"></div>
+                </aside>
+
+                </section>
+
+
+                <aside class="post-nav">
+                    <div class="clear"></div>
+                </aside>
+
+            </div>
+        </article>
+    </main>
+      <!-- TODO : Body class -->
+    <div id="body-class" style="display: none;" class=""></div>
+
+    <footer id="footer">
+      <div class="inner">
+        <section class="credits">
+
+
+          <span class="credits-theme">Theme <a href="https://github.com/arulrajnet/attila" rel="nofollow">Attila</a></span>
+          <span class="credits-software">Published with <a href="https://github.com/getpelican/pelican" rel="nofollow">Pelican</a></span>
+        </section>
+      </div>
+    </footer>
+  </section>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script type="text/javascript" src="/theme/js/script.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+  <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+
+
+  <title>Instagram</title>
+
+
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="referrer" content="origin" />
+  <meta name="generator" content="Pelican" />
+<link href="/drafts/instagram.html" rel="canonical" />
+  <!-- Feed -->
+        <link href="/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="a[musing] Full Atom Feed" />
+          <link href="/feeds/{slug}.atom.xml" type="application/atom+xml" rel="alternate" title="a[musing] Categories Atom Feed" />
+
+  <link href="/theme/css/style.css" type="text/css" rel="stylesheet" />
+
+  <!-- Code highlight color scheme -->
+      <link href="/theme/css/code_blocks/darkly.css" rel="stylesheet">
+
+
+  <!-- Custom fonts -->
+  <link href='https://fonts.googleapis.com/css?family=Montserrat:400,300' rel='stylesheet' type='text/css' />
+  <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css" />
+
+  <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+  <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+  <![endif]-->
+
+
+
+    <meta name="description" content="Grokking the System Design Interview Notes">
+
+    <meta name="author" content="kashilkarkunal">
+
+    <meta name="tags" content="cs">
+
+
+
+
+<!-- Open Graph -->
+<meta property="og:site_name" content="a[musing]"/>
+<meta property="og:title" content="Instagram"/>
+<meta property="og:description" content="Grokking the System Design Interview Notes"/>
+<meta property="og:locale" content="en_US"/>
+<meta property="og:url" content="/drafts/instagram.html"/>
+<meta property="og:type" content="article"/>
+<meta property="article:published_time" content="2021-03-26 20:50:00-07:00"/>
+<meta property="article:modified_time" content=""/>
+<meta property="article:author" content="/author/kashilkarkunal.html">
+<meta property="article:section" content="cs"/>
+<meta property="article:tag" content="cs"/>
+<meta property="og:image" content="/images/head_cover.jpeg">
+
+<!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@kashilkarkunal">
+    <meta name="twitter:title" content="Instagram">
+    <meta name="twitter:url" content="/drafts/instagram.html">
+
+        <meta name="twitter:image:src" content="/images/head_cover.jpeg">
+
+      <meta name="twitter:description" content="Grokking the System Design Interview Notes">
+
+<script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "Article",
+  "name": "Instagram",
+  "headline": "Instagram",
+  "datePublished": "2021-03-26 20:50:00-07:00",
+  "dateModified": "",
+  "author": {
+    "@type": "Person",
+    "name": "kashilkarkunal",
+    "url": "/author/kashilkarkunal.html"
+  },
+  "image": "/images/head_cover.jpeg",
+  "url": "/drafts/instagram.html",
+  "description": "Grokking the System Design Interview Notes"
+}
+</script>
+</head>
+<!-- TODO : Body class -->
+<body class="home-template">
+
+<nav id="menu">
+  <a class="close-button">Close</a>
+  <div class="nav-wrapper">
+    <p class="nav-label">Menu</p>
+    <ul>
+
+              <li role="presentation"><a href="/pages/about-me.html">About Me</a></li>
+              <li role="presentation"><a href="/pages/this-site.html">This Site</a></li>
+
+    </ul>
+  </div>
+</nav>
+    <!-- Progressbar -->
+    <div class="progress-container">
+        <span class="progress-bar"></span>
+    </div>
+
+    <!-- Page Header -->
+    <!-- Set your background image for this header on the line below. -->
+    <header id="post-header" class="has-cover">
+      <div class="inner">
+        <nav id="navigation">
+            <span id="home-button" class="nav-button">
+                <a class="home-button" href="/" title="Home"><i class="ic ic-arrow-left"></i> Home</a>
+            </span>
+          <span id="menu-button" class="nav-button">
+            <a class="menu-button"><i class="ic ic-menu"></i> Menu</a>
+          </span>
+        </nav>
+        <h1 class="post-title">Instagram</h1>
+        <!-- TODO : Proper class for headline -->
+        <span class="post-meta">
+                <a href="/author/kashilkarkunal.html">Kunal</a>
+            | <time datetime="Fri 26 March 2021">Fri 26 March 2021</time>
+        </span>
+        <!-- TODO : Modified check -->
+            <div class="post-cover cover" style="background-image: url('/images/head_cover.jpeg')">
+      </div>
+    </header>
+
+  <section id="wrapper">
+    <a class="hidden-close"></a>
+
+    <!-- Post content -->
+    <main class="content" role="main">
+        <article class="post">
+        <div class="inner">
+            <section class="post-content">
+                <h2>Step 1: Requirements Clarification</h2>
+<h3>Functional Requirements</h3>
+<ol>
+<li>users can upload/download/view photos.</li>
+<li>users can search for photos based on titles</li>
+<li>will users follow each other to see photo uploads?</li>
+<li>will there be private profiles?</li>
+<li>what actions can users take on photos that they have uploaded?</li>
+<li>what actions can users take on photos other have uploaded?</li>
+<li>will a user be able to see a timeline of all the photos they have uploaded?</li>
+<li>can users access this service using REST APIs?</li>
+<li>are there size limits or processing that will be done on large images?</li>
+<li>will users only be able to share images or videos as well? any size limits on that?</li>
+<li>will users get notifications when the people they follow upload something?</li>
+<li>will we provide editing functionality for photos as they are being uploaded?</li>
+</ol>
+<h3>Non-Functional Requirements</h3>
+<ol>
+<li>highly available? responsive? </li>
+<li>Consistency can take a hit in the interest of availability.</li>
+<li>Highly reliable, photos uploaded should not be lost.</li>
+</ol>
+<h2>Design Considerations</h2>
+<h3>Traffic Estimates</h3>
+<p>Assume that there are 500 M uploads every month. After uploading their photo, a user will on an average see photos of 20 of his followers. So 10 B read requests every month.</p>
+<p>So - (500 M)/ (30 * 24 * 3600) s ~= 200 uploads/s</p>
+<p>And reads is ~= 4000 reads/s</p>
+<h3>Size Estimates</h3>
+<p>A photo could be on an average 4 MB, video would be 50 MB</p>
+<p>Let's assume that ratio of photos to videos is 80:20 so - 500 M * 0.8 * 4 MB + 500 M * 0.2 * 50 ~=  800 TB/month</p>
+<p>Over 5 years - 800 * 12 * 5 ~= 48 PB</p>
+<h3>Bandwidth Estimates</h3>
+<p>200 * 0.8 * 4 + 200 * 0.2 * 50 = 3 GB/s</p>
+<div class="highlight"><pre><span></span><code><span class="err">Book Estimates - </span>
+<span class="err">Let’s assume we have 300M total users, with 1M daily active</span>
+<span class="err">users.</span>
+<span class="err">• 2M new photos every day, 23 new photos every second.</span>
+<span class="err">• Average photo file size =&gt; 200KB</span>
+<span class="err">• Total space required for 1 day of photos</span>
+<span class="err">2M * 200KB =&gt; 400 GB</span>
+<span class="err">• Total space required for 5 years:</span>
+<span class="err">400GB * 365 (days a year) * 5 (years) ~= 712 TB</span>
+</code></pre></div>
+
+<h2>High Level Design</h2>
+<ol>
+<li>Upload photos</li>
+<li>View Photos/Search Photos based on title</li>
+<li>Follow users</li>
+</ol>
+            </section>
+
+            <section class="post-info">
+                <div class="post-share">
+                    <a class="twitter" href="https://twitter.com/share?text=Instagram&amp;url=/drafts/instagram.html" onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+                    <i class="ic ic-twitter"></i><span class="hidden">Twitter</span>
+                    </a>
+                    <a class="facebook" href="https://www.facebook.com/sharer/sharer.php?u=/drafts/instagram.html" onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+                    <i class="ic ic-facebook"></i><span class="hidden">Facebook</span>
+                    </a>
+                    <a class="googleplus" href="https://plus.google.com/share?url=/drafts/instagram.html" onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
+                    <i class="ic ic-googleplus"></i><span class="hidden">Google+</span>
+                    </a>
+                    <div class="clear"></div>
+                </div>
+
+                <aside class="post-tags">
+<a href="/tag/cs.html">cs</a>                </aside>
+
+                <div class="clear"></div>
+
+                <aside class="post-author">
+
+
+                        <figure class="post-author-avatar">
+                            <img src="/images/avatar.jpeg" alt="Kunal" />
+                        </figure>
+                    <div class="post-author-bio">
+                        <h4 class="post-author-name"><a href="/author/kashilkarkunal.html">Kunal</a></h4>
+                            <p class="post-author-about">👨‍💻 🏃‍♂️ ⛰️ 🐈 🤹‍♂️ 📚 🔁</p>
+                            <span class="post-author-location"><i class="ic ic-location"></i> Los Angeles</span>
+                        <!-- Social linkes in alphabet order. -->
+                    </div>
+                    <div class="clear"></div>
+                </aside>
+
+                </section>
+
+
+                <aside class="post-nav">
+                    <div class="clear"></div>
+                </aside>
+
+            </div>
+        </article>
+    </main>
+      <!-- TODO : Body class -->
+    <div id="body-class" style="display: none;" class=""></div>
+
+    <footer id="footer">
+      <div class="inner">
+        <section class="credits">
+
+
+          <span class="credits-theme">Theme <a href="https://github.com/arulrajnet/attila" rel="nofollow">Attila</a></span>
+          <span class="credits-software">Published with <a href="https://github.com/getpelican/pelican" rel="nofollow">Pelican</a></span>
+        </section>
+      </div>
+    </footer>
+  </section>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script type="text/javascript" src="/theme/js/script.js"></script>
+
+</body>
+</html>
